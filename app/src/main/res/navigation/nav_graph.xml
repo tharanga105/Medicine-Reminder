@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.medicinereminder.ui.Fragments.HomeFragment"
+        android:label="Medicine Reminder App"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_editMedicineFragment"
+            app:destination="@id/editMedicineFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_createMedicineFragment"
+            app:destination="@id/createMedicineFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createMedicineFragment"
+        android:name="com.example.medicinereminder.ui.Fragments.CreateMedicineFragment"
+        android:label="Add New Medicine"
+        tools:layout="@layout/fragment_create_medicine" >
+        <action
+            android:id="@+id/action_createMedicineFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editMedicineFragment"
+        android:name="com.example.medicinereminder.ui.Fragments.EditMedicineFragment"
+        android:label="Edit Medicine"
+        tools:layout="@layout/fragment_edit_medicine" >
+        <action
+            android:id="@+id/action_editMedicineFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+</navigation>

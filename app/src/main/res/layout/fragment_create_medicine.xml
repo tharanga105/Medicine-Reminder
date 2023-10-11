@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context=".ui.Fragments.CreateMedicineFragment">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp" >
+        
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_txt_shape"
+            android:layout_marginTop="10dp"
+            android:maxLines="1"
+            android:padding="15dp"
+            android:id="@+id/edtMedicineName"
+            android:textColorHint="@color/white"
+            android:hint="Medicine Name..." />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_txt_shape"
+            android:layout_marginTop="10dp"
+            android:id="@+id/editDose"
+
+            android:maxLines="1"
+            android:padding="15dp"
+            android:textColorHint="@color/white"
+            android:hint="Dose.."/>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:id="@+id/pRed"
+                android:background="@drawable/red_dot"
+                android:layout_height="30dp"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:id="@+id/pYellow"
+                android:background="@drawable/yellow_dot"
+                android:layout_marginStart="20dp"
+                android:layout_height="30dp"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:id="@+id/pGreen"
+                android:background="@drawable/green_dot"
+                android:layout_marginStart="20dp"
+                android:layout_height="30dp"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:id="@+id/pBlue"
+                android:background="@drawable/blue_dot"
+                android:layout_marginStart="20dp"
+                android:layout_height="30dp"/>
+
+
+        </LinearLayout>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/edtDescription"
+            android:background="@drawable/edit_txt_shape"
+            android:layout_marginTop="10dp"
+            android:gravity="start"
+            android:padding="15dp"
+            android:textColorHint="@color/white"
+            android:hint="Description.."/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/selectTimebtn"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Select time" />
+
+            <Button
+                android:id="@+id/SetAlarmbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:text="SET ALARM" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnSaveMedicine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="26dp"
+        android:src="@drawable/ic_baseline_done_24"
+        app:backgroundTint="@color/red_color" />
+</FrameLayout>
