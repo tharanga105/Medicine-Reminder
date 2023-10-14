@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.example.medicinereminder.Model.Medicine
 import com.example.medicinereminder.R
 import com.example.medicinereminder.ViewModel.MedicineViewModel
@@ -85,7 +86,7 @@ class CreateMedicineFragment : Fragment() {
 
 
         return binding.root
-    }
+     }
 
 
     private fun createMedicine(it: View?) {
@@ -108,6 +109,8 @@ class CreateMedicineFragment : Fragment() {
         )
         viewModel.addMedicine(data)
         Toast.makeText(requireContext(), "Create medicine success", Toast.LENGTH_SHORT).show()
+
+        Navigation.findNavController(it!!).navigate(R.id.action_createMedicineFragment_to_homeFragment)
 
 
     }

@@ -13,6 +13,10 @@ import com.example.medicinereminder.R
 import com.example.medicinereminder.ViewModel.MedicineViewModel
 import com.example.medicinereminder.databinding.FragmentHomeBinding
 import com.example.medicinereminder.ui.Adapter.MedicineAdapter
+import java.util.*
+import java.util.concurrent.Executors
+import java.util.concurrent.ScheduledExecutorService
+import java.util.concurrent.TimeUnit
 
 class HomeFragment : Fragment() {
 
@@ -35,12 +39,30 @@ class HomeFragment : Fragment() {
         })
 
 
-        binding.btnAddMedicine.setOnClickListener {
+            binding.btnAddMedicine.setOnClickListener {
 
              Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_createMedicineFragment)
          }
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        println("Service Start")
+        val startTime = Calendar.getInstance()
+        startTime.set(2023, Calendar.OCTOBER, 14, 22,8 ,0 ) // Replace with your desired start date and time
+
+
+        val currentTime = Calendar.getInstance()
+
+        // Create a scheduled executor service
+        val scheduler: ScheduledExecutorService = Executors.newScheduledThreadPool(1)
+
+        // Schedule a recurring task
+        scheduler.scheduleAtFixedRate({
+            // Place your task logic here
+            println("Recursive task executed at ${Date()}")
+        }, 1, 1, TimeUnit.MINUTES)
+    }
 
 }

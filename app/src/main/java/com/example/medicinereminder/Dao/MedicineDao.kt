@@ -11,7 +11,7 @@ import com.example.medicinereminder.Model.Medicine
 
 @Dao
 interface MedicineDao {
-    @Query( "SELECT * FROM Medicine")
+    @Query("SELECT * FROM Medicine")
     fun gatMedicine(): LiveData<List<Medicine>>
 
 

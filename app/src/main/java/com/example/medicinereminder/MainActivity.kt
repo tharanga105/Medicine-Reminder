@@ -14,7 +14,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.medicinereminder.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class  MainActivity : AppCompatActivity() {
 
     lateinit var pendingIntent: PendingIntent
     lateinit var alarmManager: AlarmManager

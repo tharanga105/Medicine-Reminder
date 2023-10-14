@@ -3,10 +3,13 @@ package com.example.medicinereminder.ui.Adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.medicinereminder.Model.Medicine
 import com.example.medicinereminder.R
 import com.example.medicinereminder.databinding.ItemDescriptionBinding
+import com.example.medicinereminder.ui.Fragments.HomeFragment
+import com.example.medicinereminder.ui.Fragments.HomeFragmentDirections
 
 class MedicineAdapter(val requireContext: Context, val medicineList: List<Medicine>) :
     RecyclerView.Adapter<MedicineAdapter.medicineViewHolder>() {
@@ -44,8 +47,16 @@ class MedicineAdapter(val requireContext: Context, val medicineList: List<Medici
             "4" -> {holder.binding.viewPriority.setBackgroundResource(R.drawable.blue_dot)
 
             }
-        }
 
+
+
+        }
+        holder.binding.root.setOnClickListener{
+
+            val action = HomeFragmentDirections.actionHomeFragmentToEditMedicineFragment()
+            Navigation.findNavController(it).navigate(action)
+
+        }
     }
 
     override fun getItemCount() = medicineList.size
