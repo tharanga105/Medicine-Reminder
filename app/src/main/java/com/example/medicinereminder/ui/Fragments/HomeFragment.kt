@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit
 class HomeFragment : Fragment() {
 
     lateinit var binding: FragmentHomeBinding
-    val viewModel : MedicineViewModel by viewModels()
+    val viewModel: MedicineViewModel by viewModels()
 
 
     override fun onCreateView(
@@ -30,23 +30,24 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 
-        binding= FragmentHomeBinding.inflate(layoutInflater,container,false)
+        binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
 
         viewModel.getMedicine().observe(viewLifecycleOwner, { medicineList ->
 
             binding.rcvAllMedicine.layoutManager = LinearLayoutManager(requireContext())
-            binding.rcvAllMedicine.adapter=MedicineAdapter(requireContext(),medicineList)
+            binding.rcvAllMedicine.adapter = MedicineAdapter(requireContext(), medicineList)
         })
 
 
-            binding.btnAddMedicine.setOnClickListener {
+        binding.btnAddMedicine.setOnClickListener {
 
-             Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_createMedicineFragment)
-         }
+            Navigation.findNavController(it)
+                .navigate(R.id.action_homeFragment_to_createMedicineFragment)
+        }
         return binding.root
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+}
+    /*override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         println("Service Start")
         val startTime = Calendar.getInstance()
@@ -65,4 +66,4 @@ class HomeFragment : Fragment() {
         }, 1, 1, TimeUnit.MINUTES)
     }
 
-}
+}*/

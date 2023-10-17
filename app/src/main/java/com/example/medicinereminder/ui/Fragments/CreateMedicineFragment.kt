@@ -99,9 +99,8 @@ class CreateMedicineFragment : Fragment() {
 
         val data = Medicine(
             null,
-            meicineName = medicineName,
+            medicineName = medicineName,
             dose = dose,
-            discription = discription,
             date = medicineDate.toString(),
             priority
 

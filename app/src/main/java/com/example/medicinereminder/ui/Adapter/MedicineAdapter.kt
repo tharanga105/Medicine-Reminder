@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.medicinereminder.Model.Medicine
 import com.example.medicinereminder.R
 import com.example.medicinereminder.databinding.ItemDescriptionBinding
-import com.example.medicinereminder.ui.Fragments.HomeFragment
 import com.example.medicinereminder.ui.Fragments.HomeFragmentDirections
+
 
 class MedicineAdapter(val requireContext: Context, val medicineList: List<Medicine>) :
     RecyclerView.Adapter<MedicineAdapter.medicineViewHolder>() {
@@ -30,7 +30,7 @@ class MedicineAdapter(val requireContext: Context, val medicineList: List<Medici
 
     override fun onBindViewHolder(holder: medicineViewHolder, position: Int) {
         val data = medicineList[position]
-        holder.binding.medicineName.text = data.meicineName
+        holder.binding.medicineName.text = data.medicineName
         holder.binding.medicineDose.text= data.dose
         holder.binding.medicineDate.text= data.date
 
@@ -53,7 +53,7 @@ class MedicineAdapter(val requireContext: Context, val medicineList: List<Medici
         }
         holder.binding.root.setOnClickListener{
 
-            val action = HomeFragmentDirections.actionHomeFragmentToEditMedicineFragment()
+            val action = HomeFragmentDirections.actionHomeFragmentToEditMedicineFragment(data)
             Navigation.findNavController(it).navigate(action)
 
         }
