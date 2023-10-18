@@ -40,41 +40,41 @@ class CreateMedicineFragment : Fragment() {
 
 
 
-        binding.pBlue.setImageResource(R.drawable.ic_baseline_done_24)
-
-        binding.pBlue.setOnClickListener {
-            priority = "1"
-            binding.pBlue.setImageResource(R.drawable.ic_baseline_done_24)
-            binding.pRed.setImageResource(0)
-            binding.pYellow.setImageResource(0)
-            binding.pGreen.setImageResource(0)
-
-
-        }
-
-        binding.pGreen.setOnClickListener {
-            priority = "2"
-            binding.pGreen.setImageResource(R.drawable.ic_baseline_done_24)
-            binding.pRed.setImageResource(0)
-            binding.pYellow.setImageResource(0)
-            binding.pBlue.setImageResource(0)
-
-        }
+        binding.pRed.setImageResource(R.drawable.ic_baseline_done_24)
 
         binding.pRed.setOnClickListener {
-            priority = "3"
+            priority = "1"
             binding.pRed.setImageResource(R.drawable.ic_baseline_done_24)
             binding.pBlue.setImageResource(0)
             binding.pYellow.setImageResource(0)
             binding.pGreen.setImageResource(0)
 
+
         }
 
         binding.pYellow.setOnClickListener {
-            priority = "4"
+            priority = "2"
             binding.pYellow.setImageResource(R.drawable.ic_baseline_done_24)
             binding.pRed.setImageResource(0)
+            binding.pGreen.setImageResource(0)
             binding.pBlue.setImageResource(0)
+
+        }
+
+        binding.pGreen.setOnClickListener {
+            priority = "3"
+            binding.pGreen.setImageResource(R.drawable.ic_baseline_done_24)
+            binding.pBlue.setImageResource(0)
+            binding.pYellow.setImageResource(0)
+            binding.pRed.setImageResource(0)
+
+        }
+
+        binding.pBlue.setOnClickListener {
+            priority = "4"
+            binding.pBlue.setImageResource(R.drawable.ic_baseline_done_24)
+            binding.pRed.setImageResource(0)
+            binding.pYellow.setImageResource(0)
             binding.pGreen.setImageResource(0)
 
         }
@@ -92,7 +92,7 @@ class CreateMedicineFragment : Fragment() {
     private fun createMedicine(it: View?) {
         val medicineName = binding.edtMedicineName.text.toString()
         val dose = binding.editDose.text.toString()
-        val discription = binding.edtDescription.text.toString()
+
 
         val d = Date()
         val medicineDate: CharSequence = DateFormat.format("MMMM d, yyyy ", d.time)

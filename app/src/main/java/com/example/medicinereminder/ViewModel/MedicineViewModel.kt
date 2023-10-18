@@ -22,6 +22,15 @@ class  MedicineViewModel(application:Application):AndroidViewModel(application) 
 
     fun getMedicine():LiveData<List<Medicine>> = repository. getAllMedicine()
 
+    fun getRedMedicine():LiveData<List<Medicine>> = repository.getRedMedicine()
+
+    fun getYellowMedicine():LiveData<List<Medicine>> = repository.getYellowMedicine()
+
+    fun getGreenMedicine():LiveData<List<Medicine>> = repository.getGreenMedicine()
+
+    fun getBlueMedicine():LiveData<List<Medicine>> = repository.getBlueMedicine()
+
+
     fun deleteMedicine(id:Int){
         repository.deleteMedicine(id)
     }

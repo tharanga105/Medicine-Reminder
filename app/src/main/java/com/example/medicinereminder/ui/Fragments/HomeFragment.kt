@@ -38,6 +38,50 @@ class HomeFragment : Fragment() {
             binding.rcvAllMedicine.adapter = MedicineAdapter(requireContext(), medicineList)
         })
 
+        binding.filterRed.setOnClickListener{
+
+            viewModel.getRedMedicine().observe(viewLifecycleOwner, { medicineList ->
+
+                binding.rcvAllMedicine.layoutManager = LinearLayoutManager(requireContext())
+                binding.rcvAllMedicine.adapter = MedicineAdapter(requireContext(), medicineList)
+            })
+
+        }
+
+        binding.allMedicine.setOnClickListener {
+            viewModel.getMedicine().observe(viewLifecycleOwner, { medicineList ->
+
+                binding.rcvAllMedicine.layoutManager = LinearLayoutManager(requireContext())
+                binding.rcvAllMedicine.adapter = MedicineAdapter(requireContext(), medicineList)
+            })
+
+        }
+        binding.filterYellow.setOnClickListener {
+
+            viewModel.getYellowMedicine().observe(viewLifecycleOwner, { medicineList ->
+
+                binding.rcvAllMedicine.layoutManager = LinearLayoutManager(requireContext())
+                binding.rcvAllMedicine.adapter = MedicineAdapter(requireContext(), medicineList)
+            })
+        }
+        binding.filterGreen.setOnClickListener {
+
+            viewModel.getGreenMedicine().observe(viewLifecycleOwner, { medicineList ->
+
+                binding.rcvAllMedicine.layoutManager = LinearLayoutManager(requireContext())
+                binding.rcvAllMedicine.adapter = MedicineAdapter(requireContext(), medicineList)
+            })
+        }
+        binding.filterBlue.setOnClickListener {
+
+            viewModel.getBlueMedicine().observe(viewLifecycleOwner, { medicineList ->
+
+                binding.rcvAllMedicine.layoutManager = LinearLayoutManager(requireContext())
+                binding.rcvAllMedicine.adapter = MedicineAdapter(requireContext(), medicineList)
+            })
+        }
+
+
 
         binding.btnAddMedicine.setOnClickListener {
 

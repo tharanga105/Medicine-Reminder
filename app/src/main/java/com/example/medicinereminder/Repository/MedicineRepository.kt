@@ -6,9 +6,16 @@ import com.example.medicinereminder.Model.Medicine
 
 class  MedicineRepository(val dao: MedicineDao) {
 
-    fun getAllMedicine():LiveData<List<Medicine>> {
-        return dao.gatMedicine()
-    }
+    fun getAllMedicine():LiveData<List<Medicine>> = dao.getMedicine()
+
+    fun getRedMedicine():LiveData<List<Medicine>> = dao.getRedMedicine()
+    fun getYellowMedicine():LiveData<List<Medicine>> = dao.getYellowMedicine()
+    fun getGreenMedicine():LiveData<List<Medicine>> = dao.getGreenMedicine()
+    fun getBlueMedicine():LiveData<List<Medicine>> = dao.getBlueMedicine()
+
+
+
+
     fun insertMedicine (medicine: Medicine){
          dao.insertMedicine(medicine)
     }

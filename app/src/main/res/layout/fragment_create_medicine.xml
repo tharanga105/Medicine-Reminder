@@ -70,17 +70,6 @@
 
         </LinearLayout>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:id="@+id/edtDescription"
-            android:background="@drawable/edit_txt_shape"
-            android:layout_marginTop="10dp"
-            android:gravity="start"
-            android:padding="15dp"
-            android:textColorHint="@color/white"
-            android:hint="Description.."/>
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
