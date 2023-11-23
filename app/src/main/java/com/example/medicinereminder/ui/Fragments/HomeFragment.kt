@@ -1,27 +1,24 @@
 package com.example.medicinereminder.ui.Fragments
 
 import android.os.Bundle
+import android.view.*
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.medicinereminder.Model.Medicine
 import com.example.medicinereminder.R
 import com.example.medicinereminder.ViewModel.MedicineViewModel
 import com.example.medicinereminder.databinding.FragmentHomeBinding
 import com.example.medicinereminder.ui.Adapter.MedicineAdapter
-import java.util.*
-import java.util.concurrent.Executors
-import java.util.concurrent.ScheduledExecutorService
-import java.util.concurrent.TimeUnit
 
 class HomeFragment : Fragment() {
 
     lateinit var binding: FragmentHomeBinding
     val viewModel: MedicineViewModel by viewModels()
+    var oldMyMedicine= arrayListOf<Medicine>()
+    lateinit var adapter: MedicineAdapter
 
 
     override fun onCreateView(
@@ -31,6 +28,7 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
 
         binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+        setHasOptionsMenu(true)
 
         viewModel.getMedicine().observe(viewLifecycleOwner, { medicineList ->
 
@@ -50,6 +48,7 @@ class HomeFragment : Fragment() {
 
         binding.allMedicine.setOnClickListener {
             viewModel.getMedicine().observe(viewLifecycleOwner, { medicineList ->
+                oldMyMedicine = medicineList as ArrayList<Medicine>
 
                 binding.rcvAllMedicine.layoutManager = LinearLayoutManager(requireContext())
                 binding.rcvAllMedicine.adapter = MedicineAdapter(requireContext(), medicineList)
@@ -59,7 +58,7 @@ class HomeFragment : Fragment() {
         binding.filterYellow.setOnClickListener {
 
             viewModel.getYellowMedicine().observe(viewLifecycleOwner, { medicineList ->
-
+                oldMyMedicine = medicineList as ArrayList<Medicine>
                 binding.rcvAllMedicine.layoutManager = LinearLayoutManager(requireContext())
                 binding.rcvAllMedicine.adapter = MedicineAdapter(requireContext(), medicineList)
             })
@@ -67,7 +66,7 @@ class HomeFragment : Fragment() {
         binding.filterGreen.setOnClickListener {
 
             viewModel.getGreenMedicine().observe(viewLifecycleOwner, { medicineList ->
-
+                oldMyMedicine = medicineList as ArrayList<Medicine>
                 binding.rcvAllMedicine.layoutManager = LinearLayoutManager(requireContext())
                 binding.rcvAllMedicine.adapter = MedicineAdapter(requireContext(), medicineList)
             })
@@ -75,7 +74,7 @@ class HomeFragment : Fragment() {
         binding.filterBlue.setOnClickListener {
 
             viewModel.getBlueMedicine().observe(viewLifecycleOwner, { medicineList ->
-
+                oldMyMedicine = medicineList as ArrayList<Medicine>
                 binding.rcvAllMedicine.layoutManager = LinearLayoutManager(requireContext())
                 binding.rcvAllMedicine.adapter = MedicineAdapter(requireContext(), medicineList)
             })
@@ -89,6 +88,33 @@ class HomeFragment : Fragment() {
                 .navigate(R.id.action_homeFragment_to_createMedicineFragment)
         }
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.search_menu,menu)
+
+        val item = menu.findItem(R.id.app_bar_search)
+
+        val searchView = item.actionView as SearchView
+        searchView.queryHint = "Enter Medicine Name Here...."
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                MedicineFiltering(p0)
+                return true
+            }
+        })
+
+
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    private fun MedicineFiltering(p0: String?) {
+        val newFilteredList = arrayListOf<Medicine>()
+
     }
 }
     /*override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

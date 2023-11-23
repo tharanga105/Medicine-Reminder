@@ -54,33 +54,33 @@ class EditMedicineFragment : Fragment() {
         when (oldMedicine.data.priority) {
             "1" -> {
                 priority = "1"
-                binding.pBlue.setImageResource(R.drawable.ic_baseline_done_24)
-                binding.pRed.setImageResource(0)
-                binding.pYellow.setImageResource(0)
-                binding.pGreen.setImageResource(0)
-
-            }
-            "2" -> {
-                priority = "2"
-                binding.pGreen.setImageResource(R.drawable.ic_baseline_done_24)
-                binding.pRed.setImageResource(0)
-                binding.pYellow.setImageResource(0)
-                binding.pBlue.setImageResource(0)
-
-            }
-            "3" -> {
-                priority = "3"
                 binding.pRed.setImageResource(R.drawable.ic_baseline_done_24)
                 binding.pBlue.setImageResource(0)
                 binding.pYellow.setImageResource(0)
                 binding.pGreen.setImageResource(0)
 
             }
-            "4" -> {
-                priority = "4"
+            "2" -> {
+                priority = "2"
                 binding.pYellow.setImageResource(R.drawable.ic_baseline_done_24)
                 binding.pRed.setImageResource(0)
+                binding.pGreen.setImageResource(0)
                 binding.pBlue.setImageResource(0)
+
+            }
+            "3" -> {
+                priority = "3"
+                binding.pGreen.setImageResource(R.drawable.ic_baseline_done_24)
+                binding.pBlue.setImageResource(0)
+                binding.pYellow.setImageResource(0)
+                binding.pRed.setImageResource(0)
+
+            }
+            "4" -> {
+                priority = "4"
+                binding.pBlue.setImageResource(R.drawable.ic_baseline_done_24)
+                binding.pRed.setImageResource(0)
+                binding.pYellow.setImageResource(0)
                 binding.pGreen.setImageResource(0)
 
             }
@@ -126,8 +126,10 @@ class EditMedicineFragment : Fragment() {
         }
 
 
-        binding.btnEditSaveMedicine.setOnClickListener {
+        binding.btnEditSaveMedicine.setOnClickListener{
+
             updateMedicine(it)
+
         }
 
 
@@ -144,6 +146,22 @@ class EditMedicineFragment : Fragment() {
         val d = Date()
         val medicineDate: CharSequence = DateFormat.format("MMMM d, yyyy ", d.time)
 
+ println("Service Start")
+        val startTime = Calendar.getInstance()
+        startTime.set(2023, Calendar.OCTOBER, 25, 18,49 ,0 ) // Replace with your desired start date and time
+
+
+        val currentTime = Calendar.getInstance()
+
+        // Create a scheduled executor service
+        val scheduler: ScheduledExecutorService = Executors.newScheduledThreadPool(1)
+
+        // Schedule a recurring task
+        scheduler.scheduleAtFixedRate({
+            // Place your task logic here
+            println("Recursive task executed at ${Date()}")
+        }, 1, 1, TimeUnit.MINUTES)
+
         val data = Medicine(
             oldMedicine.data.id,
             medicineName = medicineName,
@@ -153,7 +171,7 @@ class EditMedicineFragment : Fragment() {
 
 
         )
-        viewModel.updateMedicine(data)
+       // viewModel.updateMedicine(data)
         Toast.makeText(requireContext(), " Medicine updated successfully", Toast.LENGTH_SHORT)
             .show()
 
@@ -183,6 +201,8 @@ class EditMedicineFragment : Fragment() {
             textviewYes?.setOnClickListener {
                 viewModel.deleteMedicine(oldMedicine.data.id!!)
                 bottomhsheet.dismiss()
+
+
 
             }
 
